@@ -4,48 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link	rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+SC:ital@1&family=Roboto+Mono:ital@1&display=swap" rel="stylesheet">
-    <title>To do List</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Calculadora</title>
 </head>
 <body>
     <div class="container">
+        <div class="calculadora">
+            <div class="display">
+                <div class="valor-superior" data-valor-superior=""></div>
+                <div class="valor-inferior" data-valor-inferior=""></div>
 
+            </div>
 
-    <div class="perfil">
-        <div id="fecha"></div>
-        <h1>Hola, Marcos</h1>
-        <span>Vamos a cumplir tus metas</span>
+            <button class="span2" data-borrar-todo>AC</button>
+            <button data-borrar>DEL</button>
+            <button data-operador>+ </button>
+            <button data-numero>1</button>
+            <button data-numero>2</button>
+            <button data-numero>3</button>
+            <button data-operador>*</button>
+            <button data-numero>4</button>
+            <button data-numero>5</button>
+            <button data-numero>6</button>
+            <button data-operador>/</button>
+            <button data-numero>7</button>
+            <button data-numero>8</button>
+            <button data-numero>9</button>
+            <button data-operador>-</button>
+            <button data-numero>.</button>
+            <button data-numero>0</button>
+            <button data-igual="">=</button>
 
+        </div>
+        <script src="script.js"></script>
     </div>
-
-
-    <div class="agregar-tarea">
-        <input type="text" id="input" placeholder="agregar una tarea">
-        <i class='bx bx-plus-circle' id="enter"></i>
-    </div>
-
-
-    <div class="seccion-tarea">
-        <h3>Estas son tus tareas pendientes</h3>
-        <ul id="lista">
-            <!--<li>
-                <i class='bx bx-radio-circle' data="realizado" id="0"></i>
-                <p class="text">hacer la tarea de español</p>
-                <i class='bx bxs-trash' data="elimando" id="0"></i>
-            </li>-->
-
-
-        </ul>
-    </div>
-    </div>
-
-
-    <script src="script.js"></script>
-
 </body>
 </html>
