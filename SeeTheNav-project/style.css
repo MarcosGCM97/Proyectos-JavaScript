@@ -1,0 +1,105 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(146, 133, 133);
+}
+.menuYX{
+    z-index: 1;
+    position: relative;
+    left: -80px;
+    top: -60px;
+    font-size: 35px;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: pink;
+    animation: rotar2 1s linear 1 forwards;
+}
+/*@keyframes rotar2 {
+    from{
+        transform: rotate(0deg);
+        transform-origin: center;
+    }
+    to{
+        transform: rotate(-110deg);
+        transform-origin: center;
+    }
+    
+} */
+.menuYX .bx-menu{
+    position: relative;
+    top: 80px;
+    left: 90px;
+    cursor: pointer;
+    &:active{
+        transform: scale(.9);
+    }
+}
+.menuYX .bx-x{
+    position: relative;
+    top: 80px;
+    left: -20px;
+    cursor: pointer;
+    &:active{
+        transform: scale(.9);
+    }
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    align-content: center;
+    row-gap: 20px;
+}
+.nav button i{
+    font-size: 30px;
+}
+.nav button{
+    z-index: 3;
+    width: 90px;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    background: rgb(140, 233, 137);
+    display: flex;
+    align-items: center;
+    padding: 3px;
+}
+.nav .btnHome{
+    position: absolute;
+    top: 400px;
+    left: -100px;
+}
+.nav .btnAbout{
+    position: absolute;
+    top: 450px;
+    left: -100px;
+}
+.nav .btnContact{
+    position: absolute;
+    top: 500px;
+    left: -100px;
+}
+
+.carta img{
+    width: 70%;
+    height: auto;
+    text-align: center;
+}
+.carta{
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    padding: 8% 10%;
+    text-align: justify;
+    font-size: 20px;
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+}
