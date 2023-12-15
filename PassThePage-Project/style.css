@@ -1,0 +1,84 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 200px;
+}
+
+.sectNums{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    column-gap: 50px;
+}
+
+.nums{
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: solid  rgba(184, 172, 172, 0.575);
+    background: white;
+}
+.num1{
+    border: solid  rgb(42, 44, 182);
+}
+.numsBlue{
+    animation: numBlue .1s linear .5s forwards;
+}
+@keyframes numBlue {
+    to{
+        border: solid  rgb(42, 44, 182);
+    }
+}
+.lineGray{
+    position: absolute;
+    z-index: 0;
+    align-self: center;
+    height: 4px;
+    width: 300px;
+    background-color:  rgba(184, 172, 172, 0.575);
+}
+.spanBlue{
+    position: absolute;
+    height: 4px;
+    align-self: center;
+    background:  rgb(42, 44, 182);
+    z-index: 1;
+}
+.spanBlue1{
+    position: absolute;
+    left: 600px;
+    height: 4px;
+    align-self: center;
+    background:  rgb(42, 44, 182);
+    z-index: 1;
+}
+.spanBlue2{
+    position: absolute;
+    left: 700px;
+    height: 4px;
+    align-self: center;
+    background:  rgb(42, 44, 182);
+    z-index: 1;
+}
+
+button{
+    background-color: rgb(34, 141, 241);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size:15px;
+    padding: 8px 20px;
+    margin: 10px;
+    cursor: pointer;
+    &:active{
+        transform: scale(.9);
+    }
+}
+
