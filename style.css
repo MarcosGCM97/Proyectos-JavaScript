@@ -1,114 +1,69 @@
 *{
-   margin: 0;
-   padding: 0; 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
-
-@font-face {
-    font-family: Bulzing;
-    src: url('./Bulzing-z8BPD.ttf');
-}
-
-:root{
-    ---white: #d7d5e9;
-    ---purple: #3e1d5c ;
-    ---blue-light:  #5991a7;
-    ---ble-dark: #38455c;
-    ---green: #88d1da;
-}
-
-
 body{
-    background: linear-gradient(to bottom, var(---purple), var(---blue-light));
-    height: 150vh;
-    font-family: 'Bulzing','Alegreya SC', serif;
+    background: linear-gradient(to top, #4c1c3c ,  #3f4e64 );
 }
 
 .container{
-    max-width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.calculadora{
     width: 400px;
     height: 600px;
-    margin:0 auto;
-    margin-top: 30px;
-
+    background: linear-gradient(to top,  #483068 ,  #18405c);
+    display: grid;
+    grid-template-columns: repeat(4, 80px);
+    grid-template-rows: 130px repeat(6, 80px);
+    justify-content: center;
+    border-radius: 20px;
+    padding-top: 20px;
+    border: black solid 7px;
+}
+.calculadora button{
+    font-size: 1.5rem;
+    background-color: #5991a7;
+    border-radius: 15%;
+    border: 2px solid #2f344d;
+    margin: 2px;
 }
 
-/*Perfil*/
-.perfil h1{
-    color: var(---white);
-}
-.perfil span{
-    color: var(---white);
-    letter-spacing: 1px;
-}
-#fecha{
-    color: var(---white);
-    padding: 5px 0 5px 0;
-}
-
-
-/*agregar tarea*/
-.agregar-tarea{
-    background-color: var(---white);
-    border-radius: 15px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 70px;
-    margin: 40px 0;
-    color: var(---white);
-}
-.agregar-tarea span{
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    border: none;
-    background-color: var(---white);
-}
-.agregar-tarea i{
-    font-size: 50px;
-    color: var(---purple);
-
-}
-.agregar-tarea i:hover{
+.calculadora button:hover{
+    background:  #884474;
     transform: scale(1.1);
-    cursor: pointer;
+    font-size: 1.8rem;
+
 }
-.agregar-tarea input::placeholder{
-    font-size: 1.1rem;
-    color: var(---purple);
-}
-.agregar-tarea input{
-    width: 70%;
-    height: 60%;
+.display{
+    height: 120px;
+    background-color: #1e95a0;
+    opacity: .7;
+    grid-column: 1/-1;
+    border: 5px solid #2f344d; 
+    text-align: end;
+    padding: 10px 0;
 }
 
-/*seccion tarea*/
-
-.seccion-tarea h3{
-    color: var(---white);
-    margin-bottom: 20px;
+.span2{
+    grid-column: span 2;
 }
-.seccion-tarea li{
-    display: flex;
-    background: linear-gradient(to bottom, var(---ble-dark), var(---green));
-    border-radius: 15px;
-    padding: 10px;
-    align-items: center;
-    justify-content: space-between;
+
+.valor-superior{
+    color: white;
+    font-size: 1.2rem;
+    background-color: #4c1c3c;
     margin: 5px 0;
 }
-.seccion-tarea i{
-    font-size: 25px;
-}
-.seccion-tarea i:hover{
-    color: var(---blue-light);
-    cursor: pointer;
-}
-.seccion-tarea > ul p{
-    font-size: 1.2rem;
-}
-.line-through{
-    text-decoration: line-through;
-    color: var(---blue-light);
+
+.valor-inferior{
+    color: white;
+    font-size: 2rem;
+    background-color: #4c1c3c;
+    margin-top: 15px;
+
 }
