@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 100px;
+    margin-top:920px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+    width: 180px;
+    padding: 40px 0;
+    border-radius: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.moveToLeft{
+    position: relative;
+    left: -500px;
+    animation: moveToLeft 1s ease-in-out forwards;
+}
+
+@keyframes moveToLeft {
+    from{
+        left: -500px;
+    }
+    to{
+        left: 0px;
+    }
+}
+.moveToRight{
+    position: relative;
+    right: -500px;
+    animation: moveToRight 1s ease-in-out forwards;
+}
+
+@keyframes moveToRight {
+    from{
+        right: -500px;
+    }
+    to{
+        right: 0px;
+    }
+}
