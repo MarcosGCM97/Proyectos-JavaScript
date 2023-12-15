@@ -1,106 +1,126 @@
-const botonNumero = document.querySelectorAll('[data-numero]')
-const botonOperador = document.querySelectorAll('[data-operador]')
-const BotonBorrarTodo = document.querySelector('[data-borrar-todo]')
-const BotonBorrar = document.querySelector('[data-borrar]')
-const BotonIgual = document.querySelector('[data-igual]')
-const textoSuperior = document.querySelector('[data-valor-superior]')
-const textoInferior = document.querySelector('[data-valor-inferior]')
+const fecha = document.querySelector('#fecha');
+const lista = document.querySelector('#lista');
+const input = document.querySelector('#input');
+const botonEnter = document.querySelector('#enter');
+
+const check = 'bx-check-circle'
+const unCheck = 'bx-radio-circle'
+const lineTrhrough = 'line-through'
+let id
+let LIST
 
 
-class Calculadora {
-    constructor(textoSuperior,textoInferior){
-        this.textoInferior = textoInferior
-        this.textoSuperior = textoSuperior
-        this.valorInferior= ''
-        this.valorSuperior = ''
-        this.operador = undefined 
-    }
-
-    agregarNumero(numero){
-        if(numero === '.' && this.valorInferior.includes('.'))return
-        this.valorInferior = this.valorInferior + numero
-    }
-    imprimirDisplay(){
-        this.textoInferior.innerText = this.valorInferior
-        this.textoSuperior.innerText = this.valorSuperior
-    }
-    borrar(){
-        this.valorInferior = this.valorInferior.slice(0,-1)
-    }
-    elegirOperacion(operador){
-        if(this.valorInferior = '') return
-        if(this.valorSuperior != ''){
-            this.realizarCalculo()
-        }
-        this.operador = operador
-        this.valorSuperior = this.valorInferior
-        this.valorInferior = ''
-    }
-    realizarCalculo(){
-        let resultado
-        let conversionValorSuperior = parseFloat(this.valorSuperior)
-        let conversionValorInferior = parseFloat(this.valorInferior)
-
-        switch(this.operador){
-            case '+':
-                resultado = conversionValorSuperior + conversionValorInferior
-                break
-            case '-':
-                resultado = conversionValorSuperior - conversionValorInferior
-                break
-            case '*':
-                resultado = conversionValorSuperior * conversionValorInferior
-                break
-            case '/':
-                resultado = conversionValorSuperior / conversionValorInferior
-                break
-            default: return    
-            }
-        
-            this.valorInferior = resultado
-            this.operador = undefined
-            this.valorSuperior = ''
-    }
 
 
-    limpiarPantalla(){
-        this.valorInferior = ''
-        this.valorSuperior = ''
-        this.operador = undefined
-    }
+//creacion de fecha
+const FECHA = new Date()
+fecha.innerHTML = FECHA.toLocaleDateString('es-MX',{weekday:'long',month:'short',day:'numeric'})
+
+
+
+//funcion agregar tarea
+function agregarTarea(tarea,id,realizado,eliminado) {
+
+    if(eliminado){return}
+
+    const REALIZADO = realizado ?check :unCheck
+    const LINE = realizado?lineTrhrough :''
+    
+    let Fecha = fecha.innerHTML = FECHA.toLocaleDateString('es-MX',{weekday:'long',month:'short',day:'numeric'}) 
+
+    const elemento = ` <li id='elemento'>
+                        <i class='bx ${REALIZADO}' data="realizado" id="${id}"></i>
+                        <p class="text ${LINE}">${tarea}/</p>
+                        <p class="text ${LINE}">/${Fecha}</p>
+                        <i class='bx bxs-trash' data="eliminado" id="${id}"></i>
+                        </li>`
+    
+    lista.insertAdjacentHTML('beforeend', elemento)
 
 }
 
+//funcion tarea realizada
+function tareaRealizada(element) {
+    element.classList.toggle(check)
+    element.classList.toggle(unCheck)
+    element.parentNode.querySelector('.text').classList.toggle(lineTrhrough)
+    LIST[element.id].realizado = LIST[element.id].realizado ?false :true
+}
 
-const calculadora = new Calculadora(textoSuperior,textoInferior)
+//funcion de tarea eliminada
+function tareaEliminada(element){
+    element.parentNode.parentNode.removeChild(element.parentNode)
+    LIST[element.id].eliminado = true
+}
 
 
 
-botonNumero.forEach(boton => {
-    boton.addEventListener('click', () => {
-        calculadora.agregarNumero(boton.innerText)
-        calculadora.imprimirDisplay()
+
+
+botonEnter.addEventListener('click', ()=>{
+    const tarea = input.value 
+    if (tarea) {
+        agregarTarea(tarea,id,false,false)
+        LIST.push({
+            nombre: tarea,
+            id:id,
+            realizado:false,
+            eliminado:false
+        })
+    }
+    localStorage.setItem('ToDo',JSON.stringify(LIST))
+    input.value =''
+    id++
+})
+
+
+document.addEventListener('keyup', function(event) {
+    if(event.key=='Enter'){
+        const tarea = input.value;
+        if (tarea) {
+            agregarTarea(tarea,id,false,false)
+            LIST.push({
+                nombre: tarea,
+                id:id,
+                realizado:false,
+                eliminado:false
+            })
+        }
+        localStorage.setItem('ToDo',JSON.stringify(LIST))
+    input.value=''
+    id++
+    }
+})
+
+lista.addEventListener('click',function(event){
+    const element = event.target
+    const elementData = element.attributes.data.value
+
+    if(elementData === 'realizado'){
+        tareaRealizada(element)
+    }
+    else if(elementData === 'eliminado'){
+        tareaEliminada(element)
+    }
+    localStorage.setItem('ToDo',JSON.stringify(LIST))
+})
+
+
+
+//local storage get item
+let data = localStorage.getItem('ToDo')
+if(data){
+    LIST=JSON.parse(data)
+    id = LIST.length
+    cargarLista(LIST)
+} else {
+    LIST = []
+    id=0
+}
+
+function cargarLista(DATA){
+    DATA.forEach(function(i){
+        agregarTarea(i.nombre, i.id, i.realizado, i.eliminado)
+
     })
-})
-
-BotonBorrar.addEventListener('click', () =>{
-    calculadora.borrar()
-    calculadora.imprimirDisplay()
-})
-
-botonOperador.forEach(boton => {
-    boton.addEventListener('click', () => {
-        calculadora.elegirOperacion(boton.innerText)
-        calculadora.imprimirDisplay()
-    })
-})
-
-BotonIgual.addEventListener('click', () =>{
-    calculadora.realizarCalculo()
-    calculadora.imprimirDisplay()
-})
-
-BotonBorrarTodo.addEventListener('click', () =>{
-    calculadora.limpiarPantalla()
-    calculadora.imprimirDisplay()
-})
+}
