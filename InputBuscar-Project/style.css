@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(59, 59, 134);
+}
+div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#btnSearch{
+    position: relative;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+#btnSearch i{
+    font-size: 35px;
+    pointer-events: none;
+}
+
+#textSearch{
+    font-size: 20px;
+    padding-left: 15px;
+    visibility: hidden;
+    z-index: 0;
+    position: relative;
+    width: 0px;
+    height: 40px;
+}
