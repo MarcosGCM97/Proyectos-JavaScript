@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 4%;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    gap: 20px;
+    width: 50%;
+    height: 80vh;
+}
+
+.divImg{
+    overflow: hidden;
+    border-radius: 50px;
+    width: 0;
+    flex-grow: 1;
+    object-fit: cover;
+    & :hover{
+        cursor: pointer;
+    }
+}
+
+.verDiv{
+    animation: cambio 1s linear forwards;
+}
+@keyframes cambio {
+    to{
+        flex-grow: 4;
+    }
+}
+
+
+.noVerDiv{
+    animation: cambio2 1s linear forwards;
+}
+@keyframes cambio2 {
+    from{
+        flex-grow: 4;
+    }
+    to{
+        flex-grow: 1;
+    }
+}
+
+.h3{
+    position: relative;
+    bottom: 35px;
+    left: 10px;
+    color: white;
+    text-shadow: 5px 5px 10px black;
+}
+
+img{
+    width: auto;
+    height: 100%;
+}
